@@ -29,6 +29,8 @@ catkin_make ;
 sudo apt-get -y install fcitx-hangul;
 sudo apt-get -y install meshlab;
 sudo apt-get -y install simplescreenrecorder;
+sudo apt install -y gnome-tweaks
+
 mkdir -p ~/libraries;
 cd ~/libraries;
 apt-get install -y libssl-dev ;

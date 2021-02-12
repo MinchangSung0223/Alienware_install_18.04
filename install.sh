@@ -15,13 +15,13 @@ sudo apt -y update &&
 sudo apt -y upgrade &&
 sudo apt-get install -y ros-melodic-desktop-full &&
 sudo apt-get install -y python-pip &&
+
+sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 sudo pip install -U rosdep &&
 sudo rosdep init &&
 sudo rosdep update &&
 echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc ;
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc ;
 source ~/.bashrc ;
-sudo apt-get install -y python-rosinstall python-rosinstall-generator python-wstool build-essential;
 cd ~ ;
 mkdir -p catkin_ws/src;
 cd catkin_ws;

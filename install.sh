@@ -10,7 +10,7 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh &&
 chmod 777 cuda_10.0.130_410.48_linux &&
 chmod 777 Anaconda3-2020.11-Linux-x86_64.sh &&
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' &&
-sudo apt-key -y adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 &&
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 &&
 sudo apt -y update &&
 sudo apt -y upgrade &&
 sudo apt-get install -y ros-melodic-desktop-full &&

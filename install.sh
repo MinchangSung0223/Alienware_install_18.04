@@ -3,6 +3,7 @@ apt-get -y update;
 apt-get -y upgrade;
 sudo add-apt-repository -y ppa:graphics-drivers/ppa;
 sudo apt -y  update;
+sudo apt-get -y upgrade;
 apt-get install -y nvidia-driver-455 &&
 cd ~ &&
 wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux &&

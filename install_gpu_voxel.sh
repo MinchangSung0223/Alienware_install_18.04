@@ -63,3 +63,9 @@ cd build;
 cmake .. -D ENABLE_CUDA=True;
 cd ~/workspace/gpu-voxels;
 export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/;
+
+conda create -n ros;
+conda activate ros;
+pip install -U pip;
+pip install -U rosdep;
+pip install pybullet;

@@ -62,6 +62,7 @@ mkdir build;
 cd build;
 cmake .. -D ENABLE_CUDA=True;
 make -j16;
+make install
 cd ~/workspace/gpu-voxels;
 export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/;
 
@@ -83,4 +84,10 @@ sudo apt-get install -y ros-melodic-gazebo-ros-pkgs \
                        ros-melodic-effort-controllers \
                        ros-melodic-position-controllers \
                        ros-melodic-joint-trajectory-controller;
-                       
+                      
+apt-get install -y liburdf-def;
+cd ~/workspace;
+git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim.git;
+cd gpu_voxel_panda_sim;
+cmake . -D icl_core_DIR=/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/workspace/gpu-voxels/build/packages/gpu_voxels;
+make -j16

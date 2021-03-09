@@ -90,4 +90,5 @@ cd ~/workspace;
 git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim.git;
 cd gpu_voxel_panda_sim;
 cmake . -D icl_core_DIR=/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/workspace/gpu-voxels/build/packages/gpu_voxels;
-make -j16
+make -j16;
+source /opt/ros/melodic/setup.bash ;

@@ -61,6 +61,7 @@ cd gpu-voxels;
 mkdir build;
 cd build;
 cmake .. -D ENABLE_CUDA=True;
+make -j16;
 cd ~/workspace/gpu-voxels;
 export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/;
 

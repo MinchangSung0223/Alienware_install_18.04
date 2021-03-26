@@ -147,6 +147,7 @@ int main(int argc, char* argv[])
   tf = Matrix4f::createFromRotationAndTranslation(Matrix3f::createFromRPY(-3.14/2.0 + roll, 0 + pitch, 0 + yaw), camera_offsets);
 
   std::string point_cloud_topic = icl_core::config::paramOptDefault<std::string>("points-topic", "/cam_0_zf");
+ std::string point_cloud_topic2 = icl_core::config::paramOptDefault<std::string>("points-topic", "/transformed_1");
   LOGGING_INFO(Gpu_voxels, "DistanceROSDemo start. Point-cloud topic: " << point_cloud_topic << endl);
 
   // Generate a GPU-Voxels instance:
@@ -156,6 +157,7 @@ int main(int argc, char* argv[])
   ros::init(argc, argv, "distance_ros_demo");
   ros::NodeHandle nh;
   ros::Subscriber sub = nh.subscribe<pcl::PointCloud<pcl::PointXYZ> >(point_cloud_topic, 1, callback);
+ros::Subscriber sub2 = nh.subscribe<pcl::PointCloud<pcl::PointXYZ> >(point_cloud_topic2, 1, callback);
 
   //Vis Helper
   gvl->addPrimitives(primitive_array::ePRIM_SPHERE, "measurementPoints");

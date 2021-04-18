@@ -1,4 +1,4 @@
-# Alienware_install_18.04
+# GPU-VOXESL SETTING
 1. Docker 설치
 ```bash
 curl https://get.docker.com | sh \

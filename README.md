@@ -23,7 +23,7 @@ sudo apt-get install -y nvidia-docker2
 또는 직접 빌드하는 방법.
 ```bash
     wget https://raw.githubusercontent.com/tjdalsckd/Alienware_install_18.04/main/Dockerfile
-    docker build -t tjdalskcd/gpu_voxels:latest .
+    docker build -t tjdalsckd/gpu_voxels:latest .
 ```
 image가 다운로드 된 것을 확인
 ```bash
@@ -36,7 +36,7 @@ image가 다운로드 된 것을 확인
 terminal1: 
 ```bash
 xhost +local:root
- docker  run --rm -it --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalskcd/gpu_voxels:latest bash
+ docker  run --rm -it --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalsckd/gpu_voxels:latest bash
 
 ```
 
@@ -149,7 +149,7 @@ gedit ~/.config/terminator/config
 terminal1
 ```bash
      xhost +local:root
- docker  run --rm -it --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalskcd/gpu_voxels:latest bash
+ docker  run --rm -it --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalsckd/gpu_voxels:latest bash
 ```
 terminal2
 ```bash

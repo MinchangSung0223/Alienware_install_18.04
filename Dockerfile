@@ -61,6 +61,15 @@ RUN /bin/bash -c "cd ~/libraries;sudo apt-get install -y libeigen3-dev;apt-get i
 RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=3.7;conda activate ros;pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
 RUN /bin/bash -c "export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/";
 RUN apt-get install -y xauth
+RUN apt-get install -y at
+RUN apt-get install software-properties-common
+RUN add-apt-repository --keyserver hkps://keyserver.ubuntu.com:443 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
+
+RUN sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo xenial main" -u
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
+RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install"
 
 EXPOSE 80
 EXPOSE 443

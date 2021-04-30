@@ -17,9 +17,11 @@ sudo apt-get install -y nvidia-docker2
 ```
 
 2. ~배포된 image를 다운로드 하는 방법(Docker 기간 종료라서 다운이 안됩니다 빌드하는 방법으로 진행해주세요..)~
-~```bash 
+```bash 
      docker pull tjdalsckd/gpu_voxels:latest
-```~
+```
+
+
 또는 직접 빌드하는 방법.
 ```bash
     wget https://raw.githubusercontent.com/tjdalsckd/Alienware_install_18.04/main/Dockerfile

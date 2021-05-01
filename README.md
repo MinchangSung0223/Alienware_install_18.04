@@ -199,7 +199,9 @@ terminal4
 
 terminal3
 ```bash
+
  exit
+ sudo apt-get install ros-$ROS_VER-realsense2-camera
 roslaunch realsense2_camera demo
 ```
 terminal4

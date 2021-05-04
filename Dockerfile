@@ -80,7 +80,7 @@ RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev 
 
 RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install"
 
-RUN /bin/bash -c "cd ~/workspace; git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim; cd gpu_voxel_panda_sim; cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/root/workspace/gpu-voxels/build/packages/gpu_voxels; make -j16; "
+RUN /bin/bash -c "cd ~/workspace; source /opt/ros/kinetic/setup.bash; git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim; cd gpu_voxel_panda_sim; cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/root/workspace/gpu-voxels/build/packages/gpu_voxels; make -j16; "
 EXPOSE 80
 EXPOSE 443
 

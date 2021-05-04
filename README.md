@@ -234,4 +234,25 @@ cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D g
 
 make -j16
 ```
-L
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## script 파일로 설치 시 생긴 문제점 정리
+1. conda activate ros 가 script 내에서 실행 불가 따라서 pcl과 gpu-voxels를 빌드 할 때에 ros가 안잡힌 채로 설치됨.
+2. pybullet 버전이 안맞음 pip install pybullet==3.0.8로 설치
+3. 
+

@@ -60,7 +60,8 @@ RUN /bin/bash -c "cd ~/libraries;sudo apt-get install -y libeigen3-dev;apt-get i
 
 RUN apt-get install -y ros-kinetic-moveit*
 RUN apt-get install -y ros-kinetic-ompl
-RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;source ~/anaconda3/etc/profile.d/conda.sh;conda activate ros;pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
+RUN apt-get install -y ros-kinetic-realsense2-camera
+RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;source ~/anaconda3/etc/profile.d/conda.sh;conda activate ros;source ~/.bashrc; pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
 RUN /bin/bash -c "export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/";
 RUN /bin/bash -c "source ~/.bashrc;apt-get install -y python-pip;pip install pybullet==3.0.8; pip install -U pip; pip install -U numpy"
 
@@ -80,7 +81,8 @@ RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev 
 
 RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install"
 
-RUN /bin/bash -c "cd ~/workspace; source /opt/ros/kinetic/setup.bash; git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim; cd gpu_voxel_panda_sim; cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/root/workspace/gpu-voxels/build/packages/gpu_voxels; make -j16; "
+RUN /bin/bash -c "cd ~/workspace; git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim; cd gpu_voxel_panda_sim; cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/root/workspace/gpu-voxels/build/packages/gpu_voxels; make -j16; "
+
 EXPOSE 80
 EXPOSE 443
 

@@ -47,7 +47,7 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+    echo "conda activate ros" >> ~/.bashrc
 
 RUN /bin/bash -c "cd ~/libraries;wget https://www.vtk.org/files/release/8.2/VTK-8.2.0.tar.gz;tar -zxvf VTK-8.2.0.tar.gz;cd VTK-8.2.0 ;mkdir build ;cd build ; cmake .. ; make -j16 ; make install ;"
 
@@ -58,12 +58,20 @@ RUN /bin/bash -c "cd ~/libraries;sudo apt-get  install -y libudev-dev;sudo apt-g
 
 RUN /bin/bash -c "cd ~/libraries;sudo apt-get install -y libeigen3-dev;apt-get install  -y libflann-dev;sudo apt-get install  -y g++ cmake cmake-gui doxygen mpi-default-dev openmpi-bin openmpi-common libeigen3-dev libboost-all-dev libqhull* libusb-dev libgtest-dev git-core freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libusb-1.0-0-dev graphviz mono-complete qt-sdk libeigen3-dev;sudo apt install  -y libglew-dev;sudo apt-get install -y  libsqlite3-0 libpcap0.8  ;sudo apt-get install  -y libpcap-dev;wget https://github.com/PointCloudLibrary/pcl/archive/pcl-1.9.1.tar.gz;tar xvf pcl-1.9.1.tar.gz;cd pcl-pcl-1.9.1;mkdir build;cd build;cmake .. -D WITH_OPENNI=True -D WITH_OPENNI2=True;make -j16;make install;"
 
-RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;conda activate ros;pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
+RUN apt-get install -y ros-kinetic-moveit*
+RUN apt-get install -y ros-kinetic-ompl
+RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;source ~/anaconda3/etc/profile.d/conda.sh;conda activate ros;pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
 RUN /bin/bash -c "export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/";
+RUN /bin/bash -c "source ~/.bashrc;apt-get install -y python-pip;pip install pybullet==3.0.8; pip install -U pip; pip install -U numpy"
+
+
+
 RUN apt-get install -y xauth
 RUN apt-get install -y at
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository --keyserver hkps://keyserver.ubuntu.com:443 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
+
 
 
 RUN sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo xenial main" -u

@@ -259,6 +259,9 @@ make -j16
 ```bash
 git clone https://github.com/justagist/franka_ros_interface.git -b v0.6.0-dev
 pip install empy
-git clone https://github.com/justagist/panda_simulator.git -b kinetic-devel
+git clone https://github.com/erdalpekel/panda_simulation.git
+
+apt-get install ros-kinetic-tf2-web-republisher
+apt-get install ros-kinetic-rosbridge-suite
 catkin_make
 ```

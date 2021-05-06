@@ -256,3 +256,9 @@ make -j16
 2. pybullet 버전이 안맞음 pip install pybullet==3.0.8로 설치
 3. 
 
+```bash
+git clone https://github.com/justagist/franka_ros_interface.git -b v0.6.0-dev
+pip install empy
+git clone https://github.com/justagist/panda_simulator.git -b kinetic-devel
+catkin_make
+```

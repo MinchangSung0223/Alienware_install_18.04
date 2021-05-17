@@ -38,7 +38,7 @@ image가 다운로드 된 것을 확인
 terminal1: 
 ```bash
 xhost +local:root
- docker  run --rm -it --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalsckd/gpu_voxels:latest bash
+ docker  run --rm -it --name gpu_voxels --gpus all --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 tjdalsckd/gpu_voxels:latest bash
 
 ```
 
@@ -53,9 +53,8 @@ terminal2:
 
 ![Screenshot from 2021-04-13 19-18-45](https://user-images.githubusercontent.com/53217819/114537435-27622f80-9c8d-11eb-8363-7364b543bbb2.png)
 
-해당하는 컨테이너 아이디를 확인한 뒤 다음의 명령어를 입력.
 ```bash
- docker exec -it CONTAINER_ID bash
+ docker exec -it gpu_voxels bash
 ```
 
 4. docker 내부
